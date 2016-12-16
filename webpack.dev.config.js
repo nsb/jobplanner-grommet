@@ -5,6 +5,7 @@
 var webpack = require('webpack');
 var { Config } = require('webpack-config');
 var path = require("path");
+var HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 var mainConfig = new Config().extend("webpack.config");
 
@@ -15,11 +16,6 @@ var devConfigExtension = {
         'webpack-dev-server/client?http://localhost:3333',
         'webpack/hot/only-dev-server',
       ].concat(mainConfig.entry.app)
-  },
-
-  output: {
-    filename: '[name].js',
-    publicPath: "http://localhost:3333/assets/"
   },
 
   resolve: {
@@ -44,6 +40,11 @@ var devConfigExtension = {
 
    plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject:   'body',
+      filename: 'index.html'
+    }),
     // Used for hot-reload
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

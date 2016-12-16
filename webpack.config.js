@@ -2,6 +2,7 @@
 
 var path = require("path");
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 var nodeModulesPath = path.join(__dirname, 'node_modules');
 var isProduction = process.env.NODE_ENV == "production";
@@ -67,7 +68,15 @@ var config = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors_[chunkhash].js')
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors_[chunkhash].js'),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject:   'body',
+      filename: 'index.html'
+    })
+    // new ServiceWorkerWebpackPlugin({
+    //   entry: path.join(__dirname, 'src/static/sw.js'),
+    // }),
   ],
 
   tslint: {
