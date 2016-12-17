@@ -12,6 +12,8 @@ var config = {
   entry: {
     vendors: [
       'flux',
+      'mobx',
+      'mobx-react',
       'react',
       'react-dom',
       'babel-polyfill',
@@ -35,6 +37,8 @@ var config = {
        'react$': path.join(nodeModulesPath, 'react', 'react.js'),
        'react-dom': path.join(nodeModulesPath, 'react-dom', 'index.js'),
        'flux': path.join(nodeModulesPath, 'flux', 'index.js'),
+       'mobx': path.join(nodeModulesPath, 'mobx', 'lib', 'mobx.js'),
+       'mobx-react': path.join(nodeModulesPath, 'mobx-react', 'index.js'),
        'babel-polyfill': path.join(nodeModulesPath, 'babel-polyfill', 'lib', 'index.js'),
     }
   },
