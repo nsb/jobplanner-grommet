@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Router, Route, browserHistory} from "react-router";
-import ContentPage from "./Components/ContentPage/ContentPage";
+import Main from "./Components/Main";
 import {Provider} from "mobx-react";
 
 export default class App extends React.Component<{}, {}> {
@@ -8,7 +8,7 @@ export default class App extends React.Component<{}, {}> {
         return <div>
           <Provider>
             <Router history={browserHistory}>
-              <Route path="/" component={ContentPage} />
+              <Route path="/" component={Main} />
             </Router>
           </Provider>
         </div>;
