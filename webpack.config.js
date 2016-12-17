@@ -18,6 +18,7 @@ var config = {
       'react-dom',
       'react-router',
       'babel-polyfill',
+      'grommet',
        path.join(__dirname, 'babel', 'babelhelpers.js'),
        path.join(__dirname, 'babel', 'babelOldIE.js'),
     ],
@@ -32,7 +33,7 @@ var config = {
   },
 
   resolve: {
-    extensions: ['', '.tsx', '.ts', '.js', '.less', '.css'],
+    extensions: ['', '.tsx', '.ts', '.js', '.less', '.css', '.json'],
     modulesDirectories: ["node_modules", "resources"],
     alias: {
        'react$': path.join(nodeModulesPath, 'react', 'react.js'),
@@ -42,6 +43,7 @@ var config = {
        'mobx': path.join(nodeModulesPath, 'mobx', 'lib', 'mobx.js'),
        'mobx-react': path.join(nodeModulesPath, 'mobx-react', 'index.js'),
        'babel-polyfill': path.join(nodeModulesPath, 'babel-polyfill', 'lib', 'index.js'),
+       'grommet': path.join(nodeModulesPath, 'grommet', 'index.js')
     }
   },
 
@@ -69,7 +71,8 @@ var config = {
       { test: /\.module\.less$/,
         loader: "style-loader!css-loader?minimize&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!less-loader?-compress",
         include: path.resolve(__dirname, "App") },
-      { test: /\.(jpg|png|woff|eot|ttf|svg|gif)$/, loader: "file-loader?name=[name]_[hash].[ext]", include: path.resolve(__dirname, "App") }
+      { test: /\.(jpg|png|woff|eot|ttf|svg|gif)$/, loader: "file-loader?name=[name]_[hash].[ext]", include: path.resolve(__dirname, "App") },
+      { test: /\.json$/, loader: 'json' }
     ]
   },
 
