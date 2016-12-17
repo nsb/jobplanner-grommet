@@ -11,7 +11,6 @@ var config = {
   // entry points - each will produce one bundled js file and one css file if there is any css in dependency tree
   entry: {
     vendors: [
-      'flux',
       'mobx',
       'mobx-react',
       'react',
@@ -39,11 +38,10 @@ var config = {
        'react$': path.join(nodeModulesPath, 'react', 'react.js'),
        'react-dom': path.join(nodeModulesPath, 'react-dom', 'index.js'),
        'react-router': path.join(nodeModulesPath, 'react-router', 'umd', 'ReactRouter.js'),
-       'flux': path.join(nodeModulesPath, 'flux', 'index.js'),
        'mobx': path.join(nodeModulesPath, 'mobx', 'lib', 'mobx.js'),
        'mobx-react': path.join(nodeModulesPath, 'mobx-react', 'index.js'),
        'babel-polyfill': path.join(nodeModulesPath, 'babel-polyfill', 'lib', 'index.js'),
-       'grommet': path.join(nodeModulesPath, 'grommet', 'index.js')
+      //  'grommet': path.join(nodeModulesPath, 'grommet', 'index.js')
     }
   },
 
@@ -72,8 +70,9 @@ var config = {
         loader: "style-loader!css-loader?minimize&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!less-loader?-compress",
         include: path.resolve(__dirname, "App") },
       { test: /\.(jpg|png|woff|eot|ttf|svg|gif)$/, loader: "file-loader?name=[name]_[hash].[ext]", include: path.resolve(__dirname, "App") },
-      { test: /\.json$/, loader: 'json' }
-    ]
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded&includePaths[]=' +
+                 (encodeURIComponent(path.resolve('./node_modules')))}    ]
   },
 
   plugins: [
