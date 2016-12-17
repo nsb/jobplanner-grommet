@@ -16,6 +16,7 @@ var config = {
       'mobx-react',
       'react',
       'react-dom',
+      'react-router',
       'babel-polyfill',
        path.join(__dirname, 'babel', 'babelhelpers.js'),
        path.join(__dirname, 'babel', 'babelOldIE.js'),
@@ -36,6 +37,7 @@ var config = {
     alias: {
        'react$': path.join(nodeModulesPath, 'react', 'react.js'),
        'react-dom': path.join(nodeModulesPath, 'react-dom', 'index.js'),
+       'react-router': path.join(nodeModulesPath, 'react-router', 'umd', 'ReactRouter.js'),
        'flux': path.join(nodeModulesPath, 'flux', 'index.js'),
        'mobx': path.join(nodeModulesPath, 'mobx', 'lib', 'mobx.js'),
        'mobx-react': path.join(nodeModulesPath, 'mobx-react', 'index.js'),

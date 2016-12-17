@@ -3,7 +3,9 @@
         "target": "es6",
         "sourceMap": true,
         "jsx": "react",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "strictNullChecks": false
     },
     "files": [
     ]
