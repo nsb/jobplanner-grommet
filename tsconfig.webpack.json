@@ -4,9 +4,7 @@
         "module": "commonjs",
         "sourceMap": true,
         "jsx": "react",
-        "moduleResolution": "node",
         "noImplicitAny": false,
-        "strictNullChecks": false,
-        "baseUrl": "."
+        "strictNullChecks": false
     }
 }
