@@ -1,4 +1,5 @@
 import * as React from "react";
+import NavSidebar from "./NavSidebar";
 /* tslint:disable:no-any */
 import App = require("grommet/components/App");
 import Split = require("grommet/components/Split");
@@ -7,6 +8,7 @@ import Header = require("grommet/components/Header");
 import Footer = require("grommet/components/Footer");
 import Meter = require("grommet/components/Meter");
 import Title = require("grommet/components/Title");
+
 /* tslint:enable:no-any */
 
 export default class ContentPage extends React.Component<{}, {}> {
@@ -15,9 +17,7 @@ export default class ContentPage extends React.Component<{}, {}> {
 
         return <App centered={false}>
                 <Split priority={"left"}>
-                  <div>
-                  Sidebar
-                  </div>
+                  <NavSidebar />
                   <Header direction="row" justify="between"
                     pad={{horizontal: "medium"}}>
                     <Title>Grommet standalone</Title>
