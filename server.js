@@ -11,6 +11,9 @@ var server = new WebpackDevServer(compiler, {
     hot: true,
     // display no info to console (only warnings and errors)
     noInfo: false,
+    inline: true,
+    progress: true,
+    historyApiFallback: true,
     publicPath: config.output.publicPath,
     stats: {
       // With console colors
