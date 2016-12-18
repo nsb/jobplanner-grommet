@@ -17,7 +17,6 @@ var config = {
       'react-dom',
       'react-router',
       'babel-polyfill',
-      'grommet',
        path.join(__dirname, 'babel', 'babelhelpers.js'),
        path.join(__dirname, 'babel', 'babelOldIE.js'),
     ],
@@ -65,10 +64,6 @@ var config = {
         include: path.resolve(__dirname, "App")
       },
       { test: /\.css$/,  loader: "style-loader!css-loader?minimize", include: path.resolve(__dirname, "App") },
-      { test: /\.less$/, exclude: /\.module\.less$/, loader: "style-loader!css-loader?minimize!less-loader?compress", include: path.resolve(__dirname, "App") },
-      { test: /\.module\.less$/,
-        loader: "style-loader!css-loader?minimize&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!less-loader?-compress",
-        include: path.resolve(__dirname, "App") },
       { test: /\.(jpg|png|woff|eot|ttf|svg|gif)$/, loader: "file-loader?name=[name]_[hash].[ext]", include: path.resolve(__dirname, "App") },
       { test: /\.json$/, loader: 'json' },
       { test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded&includePaths[]=' +
