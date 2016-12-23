@@ -1,5 +1,6 @@
 import * as React from "react";
 import { inject} from "mobx-react";
+import { browserHistory } from "react-router";
 
 import Split = require("grommet/components/Split");
 import Sidebar = require("grommet/components/Sidebar");
@@ -52,7 +53,13 @@ class Login extends React.Component<ILoginProps, ILoginState> {
     _onSubmit(credentials: ILoginForm): void {
         this.setState({ busy: true });
         let authStore: AuthStore = this.props.authStore;
-        authStore.login(credentials.username, credentials.password, credentials.rememberMe);
+        authStore.login(credentials.username,
+                        credentials.password,
+                        credentials.rememberMe).then(auth => {
+                          if (auth.isLoggedIn) {
+                            browserHistory.push("/");
+                          }
+                        });
     }
 
 }
