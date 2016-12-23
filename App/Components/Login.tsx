@@ -50,12 +50,12 @@ class Login extends React.Component<ILoginProps, ILoginState> {
         </Split>;
     }
 
-    _onSubmit(credentials: ILoginForm): void {
+    _onSubmit(form: ILoginForm): void {
         this.setState({ busy: true });
         let authStore: AuthStore = this.props.authStore;
-        authStore.login(credentials.username,
-                        credentials.password,
-                        credentials.rememberMe).then(auth => {
+        authStore.login(form.username,
+                        form.password,
+                        form.rememberMe).then(auth => {
                           if (auth.isLoggedIn) {
                             browserHistory.push("/");
                           }
