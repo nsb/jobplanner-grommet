@@ -1,7 +1,6 @@
 ///<reference types="react" />
 ///<reference types="react-dom" />
-///<reference types="flux" />
-
+///<reference types="whatwg-fetch" />
 ///<reference path="./custom/webpack.d.ts"/>
 
 declare module "react" {

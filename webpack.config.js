@@ -16,6 +16,7 @@ var config = {
       'react',
       'react-dom',
       'react-router',
+      'whatwg-fetch',
       'babel-polyfill',
        path.join(__dirname, 'babel', 'babelhelpers.js'),
        path.join(__dirname, 'babel', 'babelOldIE.js'),

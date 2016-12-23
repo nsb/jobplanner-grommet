@@ -18,7 +18,7 @@ export default class NavSidebar<P, S> extends React.Component<P, S> {
       <Sidebar colorIndex="neutral-1" fixed={true}>
         <Header size="large" justify="between" pad={{horizontal: "medium"}}>
           <Title a11yTitle="Close Menu">
-            <span>Jobplanner</span>
+            <span>JobPlanner</span>
           </Title>
           <Button icon={<CloseIcon />} plain={true}
             a11yTitle="Close Menu" />
