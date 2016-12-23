@@ -9,9 +9,10 @@ import Button = require("grommet/components/Button");
 import CloseIcon = require("grommet/components/icons/base/Close");
 import Footer = require("grommet/components/Footer");
 /* tslint:enable:no-any */
+import UiStore from "../Stores/UiStore";
 
 interface INavSidebarProps {
-    onClose (): void;
+    uiStore: UiStore;
 }
 
 interface INavSidebarState {
@@ -19,6 +20,10 @@ interface INavSidebarState {
 }
 
 class NavSidebar extends React.Component<INavSidebarProps, INavSidebarState> {
+
+  constructor(props: INavSidebarProps) {
+    super(props);
+  }
 
   render(): React.ReactElement<{}> {
 
@@ -28,13 +33,17 @@ class NavSidebar extends React.Component<INavSidebarProps, INavSidebarState> {
           <Title a11yTitle="Close Menu">
             <span>JobPlanner</span>
           </Title>
-          <Button icon={<CloseIcon />} onClick={this.props.onClose} plain={true}
+          <Button icon={<CloseIcon />} onClick={this.onClose} plain={true}
             a11yTitle="Close Menu" />
         </Header>
         <Footer pad={{horizontal: "medium", vertical: "small"}}>
         </Footer>
       </Sidebar>
     );
+  }
+
+  onClose = () => {
+    this.props.uiStore.setNavActive(false);
   }
 
 }
