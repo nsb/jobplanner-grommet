@@ -10,7 +10,15 @@ import CloseIcon = require("grommet/components/icons/base/Close");
 import Footer = require("grommet/components/Footer");
 /* tslint:enable:no-any */
 
-export default class NavSidebar<P, S> extends React.Component<P, S> {
+interface INavSidebarProps {
+    onClose (): void;
+}
+
+interface INavSidebarState {
+
+}
+
+class NavSidebar extends React.Component<INavSidebarProps, INavSidebarState> {
 
   render(): React.ReactElement<{}> {
 
@@ -20,7 +28,7 @@ export default class NavSidebar<P, S> extends React.Component<P, S> {
           <Title a11yTitle="Close Menu">
             <span>JobPlanner</span>
           </Title>
-          <Button icon={<CloseIcon />} plain={true}
+          <Button icon={<CloseIcon />} onClick={this.props.onClose} plain={true}
             a11yTitle="Close Menu" />
         </Header>
         <Footer pad={{horizontal: "medium", vertical: "small"}}>
@@ -30,3 +38,5 @@ export default class NavSidebar<P, S> extends React.Component<P, S> {
   }
 
 }
+
+export default NavSidebar;

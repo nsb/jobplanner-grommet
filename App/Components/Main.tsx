@@ -9,13 +9,26 @@ interface IMainProps {
 
 }
 
-class Main extends React.Component<IMainProps, {}> {
+interface IMainState {
+  navActive: boolean;
+}
+
+class Main extends React.Component<IMainProps, IMainState> {
+
+  constructor(props: IMainProps) {
+    super(props);
+    this.state = { navActive: true };
+  }
+
+  navbarActivate = (active: boolean): void => {
+      this.setState({navActive: active});
+  }
 
   render(): React.ReactElement<{}> {
 
     return <App centered={false}>
       <Split priority={"left"} flex="right">
-        <NavSidebar />
+        {this.state.navActive ? <NavSidebar onClose={() => this.navbarActivate(false)} /> : null}
         {this.props.children}
       </Split>
     </App>;
