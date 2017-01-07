@@ -1,0 +1,1 @@
+export const TOGGLE_NAV: string = "TOGGLE_NAV";

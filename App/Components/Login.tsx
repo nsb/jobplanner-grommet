@@ -1,13 +1,11 @@
 import * as React from "react";
-import { inject} from "mobx-react";
-import { browserHistory } from "react-router";
+import { connect } from "react-redux";
+import { MapStateToProps } from "react-redux";
 
 import Split = require("grommet/components/Split");
 import Sidebar = require("grommet/components/Sidebar");
 import LoginForm = require("grommet/components/LoginForm");
 import Footer = require("grommet/components/Footer");
-
-import AuthStore from "../Stores/AuthStore";
 
 interface ILoginForm {
     username: string;
@@ -16,14 +14,13 @@ interface ILoginForm {
 }
 
 interface ILoginProps {
-    authStore: AuthStore;
+
 }
 
 interface ILoginState {
     busy: boolean;
 }
 
-@inject("authStore")
 class Login extends React.Component<ILoginProps, ILoginState> {
 
     public state: ILoginState;
@@ -52,16 +49,12 @@ class Login extends React.Component<ILoginProps, ILoginState> {
 
     _onSubmit(form: ILoginForm): void {
         this.setState({ busy: true });
-        let authStore: AuthStore = this.props.authStore;
-        authStore.login(form.username,
-                        form.password,
-                        form.rememberMe).then(auth => {
-                          if (auth.isLoggedIn) {
-                            browserHistory.push("/");
-                          }
-                        });
     }
 
 }
 
-export default Login;
+const mapStateToProps: MapStateToProps<ILoginProps, {}> = state => ({
+
+});
+
+export default connect(mapStateToProps)(Login);

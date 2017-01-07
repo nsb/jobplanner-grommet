@@ -1,4 +1,3 @@
 **/node_modules
 build/
-App/**/*.js
 App/**/*.js.map

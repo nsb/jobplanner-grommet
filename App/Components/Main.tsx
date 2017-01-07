@@ -1,22 +1,20 @@
 import * as React from "react";
-import { inject, observer } from "mobx-react";
 import NavSidebar from "./NavSidebar";
-import UiStore from "../Stores/UiStore";
-/* tslint:disable:no-any */
+import { connect, Dispatch } from "react-redux";
 import App = require("grommet/components/App");
 import Split = require("grommet/components/Split");
-/* tslint:enable:no-any */
+import { toggleNav } from "../Actions";
+import { Action } from "redux-actions";
 
 interface IMainProps {
-  uiStore: UiStore;
+    dispatch: Dispatch<Action<{}>>;
 }
 
 interface IMainState {
 
 }
 
-@inject("uiStore")
-@observer class Main extends React.Component<IMainProps, IMainState> {
+class Main extends React.Component<IMainProps, IMainState> {
 
   constructor(props: IMainProps) {
     super(props);
@@ -26,11 +24,11 @@ interface IMainState {
 
     return <App centered={false}>
       <Split priority={"left"} flex="right">
-        {this.props.uiStore.navActive ? <NavSidebar uiStore={this.props.uiStore} /> : null}
+        {true ? <NavSidebar toggleNav={() => this.props.dispatch(toggleNav())}/> : null}
         {this.props.children}
       </Split>
     </App>;
   }
 }
 
-export default Main;
+export default connect()(Main);

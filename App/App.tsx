@@ -1,42 +1,40 @@
 import * as React from "react";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 
-import { Provider } from "mobx-react";
+import { createStore, Store } from "redux";
+import { Provider } from "react-redux";
 
-import AuthStore from "./Stores/AuthStore";
-import UiStore from "./Stores/UiStore";
 import Main from "./Components/Main";
 import Login from "./Components/Login";
 import Businesses from "./Components/Businesses";
+import { IState } from "./Models";
+import rootReducer from "./Reducers";
 
 interface IAppProps {
 
 }
 
 class App extends React.Component<IAppProps, {}> {
-  authStore: AuthStore;
-  uiStore: UiStore;
+  store: Store<IState>;
 
   constructor(props: IAppProps) {
     super(props);
-    this.authStore = new AuthStore();
-    this.uiStore = new UiStore();
+    const initialState: IState = { showNav: true, token: localStorage.getItem("token") };
+    this.store = createStore(rootReducer, initialState);
   }
 
   authRequired = (nextState: Router.RouterState, replace: Router.RedirectFunction): void => {
-    if (!this.authStore.isLoggedIn) {
-      replace("/login");
-    }
+    replace("/login");
   }
 
   render(): React.ReactElement<{}> {
+
     return <div>
       <Provider
-        authStore={this.authStore}
-        uiStore={this.uiStore}>
+        store={this.store}>
         <Router history={browserHistory}>
           <Route path="login" component={Login} />
-          <Route path="/" onEnter={this.authRequired} component={Main} >
+          <Route path="/" component={Main} >
             <IndexRoute component={Businesses} />
           </Route>
         </Router>
